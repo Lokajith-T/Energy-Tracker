@@ -1,0 +1,5 @@
+{
+  "name": "AI Energy Tracker",
+  "description": "A real-time energy monitoring application with cost tracking and usage alerts.",
+  "requestFramePermissions": []
+}

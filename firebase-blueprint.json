@@ -1,0 +1,39 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User specific settings and energy data",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "tariff": { "type": "number", "description": "Cost per unit (kWh)" },
+        "usageLimit": { "type": "number", "description": "Alert threshold in kWh" },
+        "currentUnits": { "type": "number", "description": "Total units consumed" },
+        "consumerType": { "type": "string", "enum": ["domestic", "commercial"], "description": "Type of consumer for slab rates" }
+      },
+      "required": ["email"]
+    },
+    "EnergyStats": {
+      "title": "Energy Statistics",
+      "description": "Real-time energy metrics",
+      "type": "object",
+      "properties": {
+        "voltage": { "type": "number" },
+        "current": { "type": "number" },
+        "power": { "type": "number" },
+        "units": { "type": "number" },
+        "lastUpdated": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User settings and personal data"
+    },
+    "energy_stats/live": {
+      "schema": "EnergyStats",
+      "description": "Global live energy data"
+    }
+  }
+}
